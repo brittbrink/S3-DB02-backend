@@ -1,6 +1,6 @@
 package com.example.testproject.controller;
 
-import com.example.testproject.model.Person;
+
 import com.example.testproject.model.Recipes;
 import com.example.testproject.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
