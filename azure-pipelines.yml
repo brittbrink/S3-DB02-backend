@@ -32,3 +32,4 @@ steps:
       # sonar.exclusions=**/*.bin
       sonar.projectKey=Britt-S3_S3
       sonar.projectName=S3
+- task: SonarCloudAnalyze@1
