@@ -7,7 +7,7 @@ trigger:
 - releases/*
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
 
 steps:
 - task: SonarCloudPrepare@1
