@@ -45,5 +45,4 @@ public class RecipeController {
     List<Recipes> getAllRecipes(){
         return recipeRepository.findAll();
     }
-
 }
