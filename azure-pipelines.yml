@@ -50,3 +50,5 @@ steps:
     appType: 'webApp'
     WebAppName: 'S3-IP-Backend'
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+
+- task: PublishBuildArtifacts@1
