@@ -43,6 +43,10 @@ steps:
   inputs:
     pollingTimeoutSec: '300'
 
+- task: sonarcloud-buildbreaker@2
+  inputs:
+    SonarCloud: 'SonarCloud'
+    organization: 'britt-s3'
 
 - task: CopyFiles@2
   inputs:
