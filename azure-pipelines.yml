@@ -43,12 +43,25 @@ steps:
   inputs:
     pollingTimeoutSec: '300'
 
+
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: $(Build.SourcesDirectory)
+    targetFolder: $(Build.ArtifactStagingDirectory)
+
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'S3-IP-Backend'
+    publishLocation: 'Container'
+
 - task: DownloadBuildArtifacts@0
   inputs:
     buildType: 'current'
     downloadType: 'single'
     downloadPath: '$(System.ArtifactsDirectory)'
-    artifactName: 'drop'
+    artifactName: 'S3-IP-Backend'
 
 
 - task: AzureRmWebAppDeployment@4
