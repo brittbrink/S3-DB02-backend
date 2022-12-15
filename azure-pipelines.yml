@@ -48,7 +48,7 @@ steps:
     buildType: 'current'
     downloadType: 'single'
     downloadPath: '$(System.ArtifactsDirectory)'
-    artifactName: 'S3-IP-Backend'
+    artifactName: 'drop'
 
 
 - task: AzureRmWebAppDeployment@4
