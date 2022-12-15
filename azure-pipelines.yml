@@ -1,0 +1,44 @@
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- master
+- releases/*
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SonarCloud'
+    organization: 'britt-s3'
+    scannerMode: 'Other'
+    extraProperties: |
+      # Additional properties that will be passed to the scanner,
+      # Put one key=value per line, example:
+      # sonar.exclusions=**/*.bin
+      sonar.projectKey=Britt-S3_S3
+      sonar.projectName=S3
+
+
+- task: Maven@4
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.17'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: true
+    sqMavenPluginVersionChoice: 'latest'
+
+# Maven
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
