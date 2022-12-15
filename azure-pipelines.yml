@@ -43,9 +43,11 @@ steps:
   inputs:
     pollingTimeoutSec: '300'
 
-- task: PublishBuildArtifacts@1
+- task: DownloadBuildArtifacts@0
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    buildType: 'current'
+    downloadType: 'single'
+    downloadPath: '$(System.ArtifactsDirectory)'
     artifactName: 'S3-IP-Backend'
 
 
@@ -55,4 +57,4 @@ steps:
     azureSubscription: 'Azure for Students(1fd1f89b-535a-4597-8b4c-100540ea8140)'
     appType: 'webApp'
     WebAppName: 'S3-IP-Backend'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(System.DefaultWorkingDirectory)'
