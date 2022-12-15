@@ -44,6 +44,9 @@ steps:
     pollingTimeoutSec: '300'
 
 - task: PublishBuildArtifacts@1
+ inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: 'S3-IP-Backend' 
 
 - task: AzureRmWebAppDeployment@4
   inputs:
