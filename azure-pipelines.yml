@@ -42,3 +42,11 @@ steps:
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
+
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Azure for Students(1fd1f89b-535a-4597-8b4c-100540ea8140)'
+        appType: 'webApp'
+        WebAppName: 'S3-IP-Backend'
+        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
