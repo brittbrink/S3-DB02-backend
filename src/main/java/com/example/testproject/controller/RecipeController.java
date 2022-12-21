@@ -46,6 +46,15 @@ public class RecipeController {
         return Arrays.asList(recipes);
     }
 
+    @GetMapping(value = "/get/recipes/summary")
+    public List<Object> GetRecipesSummary(){
+        String url= "https://api.spoonacular.com/recipes/{id}/summary?apiKey=972014c421004f89861d4cf91103d355";
+        RestTemplate restTemplate = new RestTemplate();
+        Object[] recipes = restTemplate.getForObject(url, Object[].class);
+        return Arrays.asList(recipes);
+    }
+
+
 //    @PostMapping(value = "/addrecipes")
 
     // View recipe
