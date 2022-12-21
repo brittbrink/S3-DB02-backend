@@ -30,9 +30,17 @@ public class RecipeController {
         return result;
     }
 
-    @GetMapping(value = "/testrecipes")
-    public List<Object> GetRecipesTest(){
-        String url= "https://api.spoonacular.com/recipes/findByNutrients?maxCalories=2000&number=7&apiKey=972014c421004f89861d4cf91103d355";
+    @GetMapping(value = "/get/recipes/nutrients")
+    public List<Object> GetRecipesNutrients(){
+        String url= "https://api.spoonacular.com/recipes/findByNutrients?maxCalories=6000&number=7&apiKey=972014c421004f89861d4cf91103d355";
+        RestTemplate restTemplate = new RestTemplate();
+        Object[] recipes = restTemplate.getForObject(url, Object[].class);
+        return Arrays.asList(recipes);
+    }
+
+    @GetMapping(value = "/get/recipes/servings")
+    public List<Object> GetRecipesServings(){
+        String url= "https://api.spoonacular.com/recipes/{id}/information?includeNutrition=false&apiKey=972014c421004f89861d4cf91103d355";
         RestTemplate restTemplate = new RestTemplate();
         Object[] recipes = restTemplate.getForObject(url, Object[].class);
         return Arrays.asList(recipes);
