@@ -46,7 +46,7 @@ public class RecipeController {
         return Arrays.asList(recipes);
     }
 
-    @GetMapping(value = "/get/recipes/summary")
+    @GetMapping(value = "/get/recipes/summary/{id}")
     public List<Object> GetRecipesSummary(){
         String url= "https://api.spoonacular.com/recipes/{id}/summary?apiKey=972014c421004f89861d4cf91103d355";
         RestTemplate restTemplate = new RestTemplate();
