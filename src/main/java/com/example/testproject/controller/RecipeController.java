@@ -38,12 +38,12 @@ public class RecipeController {
         return Arrays.asList(recipes);
     }
 
-    @GetMapping(value = "/get/recipes/servings")
-    public List<Object> GetRecipesServings(){
-        String url= "https://api.spoonacular.com/recipes/{id}/information?includeNutrition=false&apiKey=972014c421004f89861d4cf91103d355";
+    @GetMapping(value = "/get/recipes/servings/{id}")
+    public Object GetRecipesServings(@PathVariable Long id){
+        String url= "https://api.spoonacular.com/recipes/"+ id + "/information?includeNutrition=false&apiKey=972014c421004f89861d4cf91103d355";
         RestTemplate restTemplate = new RestTemplate();
-        Object[] recipes = restTemplate.getForObject(url, Object[].class);
-        return Arrays.asList(recipes);
+        Object recipes = restTemplate.getForObject(url, Object.class);
+        return recipes;
     }
 
     @GetMapping(value = "/get/recipes/summary/{id}")
