@@ -47,11 +47,11 @@ public class RecipeController {
     }
 
     @GetMapping(value = "/get/recipes/summary/{id}")
-    public List<Object> GetRecipesSummary(){
-        String url= "https://api.spoonacular.com/recipes/{id}/summary?apiKey=972014c421004f89861d4cf91103d355";
+    public Object GetRecipesSummary(@PathVariable Long id){
+        String url= "https://api.spoonacular.com/recipes/" + id + "/summary?apiKey=972014c421004f89861d4cf91103d355";
         RestTemplate restTemplate = new RestTemplate();
-        Object[] recipes = restTemplate.getForObject(url, Object[].class);
-        return Arrays.asList(recipes);
+        Object recipes = restTemplate.getForObject(url, Object.class);
+        return recipes;
     }
 
 
